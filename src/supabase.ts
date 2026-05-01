@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Новые ключи от новой базы данных
+// Trigger rebuild for Github Actions
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://gdshvtyhhglehwwpoeph.supabase.co';
 const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdkc2h2dHloaGdsZWh3d3BvZXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NjIwOTgsImV4cCI6MjA5MTIzODA5OH0.busIjQciht4BcIOLS6umoRRYqM0Gm2MzjW25jPTOBAY';
 
