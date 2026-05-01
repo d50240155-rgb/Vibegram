@@ -1,0 +1,8 @@
+{
+  "name": "Vibegram.67",
+  "description": "",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
