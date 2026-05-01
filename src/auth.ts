@@ -3,20 +3,51 @@ import { getFakeEmail, showError, customConfirm } from './utils';
 import { loadChats } from './chat';
 import { initWebRTC } from './webrtc';
 
-export async function loginWithGoogle() {
-    const btn = event?.currentTarget as HTMLButtonElement | undefined;
-    if (btn) btn.disabled = true;
-    try {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: 'google',
-            options: {
-                redirectTo: window.location.origin + window.location.pathname,
+export function initGoogleAuth() {
+    const client_id = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    if (!client_id) {
+        console.warn("VITE_GOOGLE_CLIENT_ID не установлен");
+        return;
+    }
+    
+    if (typeof (window as any).google === 'undefined' || !(window as any).google.accounts) {
+        setTimeout(initGoogleAuth, 500);
+        return;
+    }
+
+    const google = (window as any).google;
+    
+    google.accounts.id.initialize({
+        client_id: client_id,
+        context: 'signin',
+        ux_mode: 'popup',
+        callback: async (response: any) => {
+            try {
+                const { data, error } = await supabase.auth.signInWithIdToken({
+                    provider: 'google',
+                    token: response.credential,
+                });
+                if (error) throw error;
+            } catch (err: any) {
+                console.error("Google login error:", err);
+                const errElement = document.getElementById('auth-error');
+                if (errElement) errElement.innerText = 'Ошибка входа: ' + err.message;
             }
-        });
-        if (error) throw error;
-    } catch (err: any) {
-        if (btn) btn.disabled = false;
-        import('./utils').then(m => m.showError('Ошибка входа через Google: ' + err.message));
+        }
+    });
+
+    const btnContainer = document.getElementById("google-btn-container");
+    if (btnContainer) {
+        google.accounts.id.renderButton(
+            btnContainer,
+            { 
+                theme: document.documentElement.classList.contains('dark') ? "filled_black" : "outline", 
+                size: "large", 
+                width: 320, 
+                shape: "pill", 
+                type: "standard" 
+            }
+        );
     }
 }
 
