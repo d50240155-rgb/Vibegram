@@ -41,6 +41,7 @@ window.addEventListener('popstate', (e) => {
 
 // Attach functions to window for HTML event handlers
 (window as any).logic = logic;
+(window as any).loginWithGoogle = logic.loginWithGoogle;
 (window as any).logout = logic.logout;
 (window as any).forceLogout = logic.forceLogout;
 (window as any).deleteAccount = logic.deleteAccount;
@@ -184,7 +185,6 @@ supabase.auth.getSession().then(({ data: { session } }) => {
             setTimeout(() => loader.remove(), 300);
         }
         document.getElementById('auth-screen')!.classList.remove('hidden');
-        logic.initGoogleAuth();
     }
 });
 
@@ -196,7 +196,6 @@ supabase.auth.onAuthStateChange((event, session) => {
             setupRealtime();
         } else if (event === 'INITIAL_SESSION') {
             document.getElementById('auth-screen')!.classList.remove('hidden');
-            logic.initGoogleAuth();
             const loader = document.getElementById('initial-loader');
             if (loader) {
                 loader.classList.add('opacity-0', 'pointer-events-none');
@@ -205,7 +204,6 @@ supabase.auth.onAuthStateChange((event, session) => {
         }
     } else if (event === 'SIGNED_OUT') {
         document.getElementById('auth-screen')!.classList.remove('hidden');
-        logic.initGoogleAuth();
         document.getElementById('app-screen')!.classList.add('hidden');
         subscriptionsSetup = false;
     }
