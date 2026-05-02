@@ -253,7 +253,7 @@ export function performFullShortsSearch(query: string) {
                             <div class="w-full h-full rounded-full overflow-hidden bg-gray-700">
                                 ${p.avatar_url ? `<img src="${p.avatar_url}" class="w-full h-full object-cover">` : `<div class="w-full h-full flex items-center justify-center font-bold text-sm text-white">${(p.display_name || p.username || '?')[0].toUpperCase()}</div>`}
                             </div>
-                            ${isPremiumUser ? `<div class="absolute -bottom-1 -right-1 bg-[#111111] rounded-full p-0.5 shadow-sm border border-[#222222] z-50 w-5 h-5 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : ''}
+                            ${isPremiumUser ? `<div class="absolute -bottom-1 -right-1 bg-[#111111] rounded-full p-0.5 shadow-sm border border-[#222222] z-50 w-5 h-5 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : ''}
                         </div>
                         <div class="flex-1 min-w-0">
                             <div class="font-bold text-white text-sm truncate">${p.display_name || p.username}</div>
@@ -297,7 +297,7 @@ async function _doViewUserShorts(targetId: string) {
     const { data: profile } = await supabase.from('profiles').select('*').eq('id', targetId).single();
     if (profile) {
         const isPremiumUser = profile.is_premium && (!profile.premium_until || new Date(profile.premium_until) > new Date());
-        const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -bottom-1 -right-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50 w-6 h-6 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
+        const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -bottom-1 -right-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50 w-6 h-6 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
         let avatarStr = profile.avatar_url ? `<img src="${profile.avatar_url}" class="w-full h-full object-cover">` : `<div class="w-full h-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl font-bold">${(profile.display_name || profile.username || '?')[0].toUpperCase()}</div>`;
         document.getElementById('analytics-avatar')!.innerHTML = `<div class="w-full h-full relative rounded-full overflow-hidden">${avatarStr}</div>${premiumBadgeHtml}`;
         document.getElementById('analytics-avatar')!.classList.remove('overflow-hidden'); // The badge needs to overflow the main container
@@ -629,7 +629,7 @@ function appendShortsFromQueue(count: number) {
             const name = short.profiles?.display_name || short.profiles?.username || 'Неизвестный';
             let avatarStr = '';
             const isPremiumUser = short.profiles?.is_premium && (!short.profiles?.premium_until || new Date(short.profiles.premium_until) > new Date());
-            const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -bottom-1 -right-1 bg-black/60 backdrop-blur rounded-full p-0.5 shadow-sm border border-gray-700 z-50 w-4 h-4 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
+            const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -bottom-1 -right-1 bg-black/60 backdrop-blur rounded-full p-0.5 shadow-sm border border-gray-700 z-50 w-4 h-4 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
             
             if (short.profiles?.avatar_url) {
                 avatarStr = `<div class="w-full h-full relative"><img src="${short.profiles.avatar_url}" class="w-full h-full object-cover rounded-full select-none" draggable="false">${premiumBadgeHtml}</div>`;
@@ -994,7 +994,7 @@ async function loadShortComments(shortId: string) {
         const renderComment = (c: any, isReply: boolean = false) => {
             const name = c.profiles?.display_name || c.profiles?.username || 'Неизвестный';
             const isPremiumUser = c.profiles?.is_premium && (!c.profiles?.premium_until || new Date(c.profiles.premium_until) > new Date());
-            const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -top-1 -left-1 bg-black/60 backdrop-blur rounded-full p-0.5 shadow-sm border border-gray-700 z-50 w-3 h-3 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
+            const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -top-1 -left-1 bg-black/60 backdrop-blur rounded-full p-0.5 shadow-sm border border-gray-700 z-50 w-3 h-3 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
             let avatarStr = '';
             if (c.profiles?.avatar_url) {
                 avatarStr = `<div class="w-full h-full relative"><img src="${c.profiles.avatar_url}" class="w-full h-full object-cover rounded-full">${premiumBadgeHtml}</div>`;

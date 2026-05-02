@@ -426,7 +426,7 @@ export function renderMessages(messages: any[], isInitialLoad = false) {
         }
 
         const isPremium = msg.profiles?.is_premium && (!msg.profiles.premium_until || new Date(msg.profiles.premium_until) > new Date());
-        const premiumBadge = isPremium ? `<span class="inline-flex items-center justify-center ml-1" title="Vibegram Premium"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
+        const premiumBadge = isPremium ? `<span class="inline-flex items-center justify-center ml-1" title="Vibegram Premium"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
 
         const senderNameHtml = (state.activeChatType === 'group' && (!isMe || isSystemAdmin)) ? `<div class="text-[13px] font-bold text-blue-500 mb-0.5 flex items-center">${displaySenderName}${premiumBadge}</div>` : '';
         

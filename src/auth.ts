@@ -300,7 +300,7 @@ function finalizeAppSetup() {
             const pr = state.currentProfile;
             const nickname = pr?.display_name || pr?.username || 'User';
             const isPremium = pr?.is_premium && (!pr.premium_until || new Date(pr.premium_until) > new Date());
-            const badge = isPremium ? `<span class="inline-flex items-center justify-center ml-1 shrink-0" title="Vibegram Premium"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
+            const badge = isPremium ? `<span class="inline-flex items-center justify-center ml-1 shrink-0" title="Vibegram Premium"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
             document.getElementById('my-nickname')!.innerHTML = `<span class="flex items-center">${nickname}${badge}</span>`;
             
             const avatarUrl = state.currentProfile?.avatar_url;

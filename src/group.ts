@@ -452,7 +452,7 @@ export async function openChatInfo(skipPushState = false) {
         isPremiumUser = state.activeChatOtherUser.is_premium && (!state.activeChatOtherUser.premium_until || new Date(state.activeChatOtherUser.premium_until) > new Date());
     }
     
-    const premiumBadgeHtml = isPremiumUser ? `<div class="absolute bottom-0 right-0 translate-x-1.5 translate-y-1.5 bg-white dark:bg-gray-800 rounded-full p-1 shadow-sm border-2 border-white dark:border-gray-900 z-50 w-8 h-8 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
+    const premiumBadgeHtml = isPremiumUser ? `<div class="absolute bottom-0 right-0 translate-x-1.5 translate-y-1.5 bg-white dark:bg-gray-800 rounded-full p-1 shadow-sm border-2 border-white dark:border-gray-900 z-50 w-8 h-8 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
     
     let avatarHtml;
     if (isSavedMessages) {
@@ -582,7 +582,7 @@ export async function openChatInfo(skipPushState = false) {
                             <div class="flex items-center gap-3 min-w-0 pointer-events-none">
                                 <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-500 dark:text-blue-400 font-bold relative shrink-0">
                                     ${m.profiles.avatar_url ? `<img src="${m.profiles.avatar_url}" class="w-full h-full object-cover rounded-full">` : (m.profiles.display_name || m.profiles.username || 'U')[0].toUpperCase()}
-                                    ${m.profiles.is_premium && (!m.profiles.premium_until || new Date(m.profiles.premium_until) > new Date()) ? `<div class="absolute -top-1 -left-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-3 h-3 object-contain" alt="Premium"></div>` : ''}
+                                    ${m.profiles.is_premium && (!m.profiles.premium_until || new Date(m.profiles.premium_until) > new Date()) ? `<div class="absolute -top-1 -left-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-3 h-3 object-contain" alt="Premium"></div>` : ''}
                                     ${m.profiles.is_online ? '<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full z-10"></div>' : ''}
                                 </div>
                                 <div class="min-w-0">
@@ -1106,7 +1106,7 @@ export async function searchUsersForAdding(query: string) {
 
     resultsContainer.innerHTML = filteredData.map(u => {
         const isPremiumUser = u.is_premium && (!u.premium_until || new Date(u.premium_until) > new Date());
-        const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -top-1 -left-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50 w-3 h-3 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
+        const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -top-1 -left-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50 w-3 h-3 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
         return `
         <div class="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors border-b border-gray-50 dark:border-gray-700 last:border-0" onclick="selectUserForAdding('${u.id}', '${u.display_name || u.username}')">
             <div class="relative w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-500 dark:text-blue-400 font-bold shrink-0">
@@ -1271,7 +1271,7 @@ export function renderCreateGroupModal(type: 'group' | 'channel' = 'group') {
         if (state.groupCreationSelectedUsers.length > 0) {
             state.groupCreationSelectedUsers.forEach(u => {
                 const isPremiumUser = u.is_premium && (!u.premium_until || new Date(u.premium_until) > new Date());
-                const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -top-0.5 -left-0.5 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50 w-2.5 h-2.5 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
+                const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -top-0.5 -left-0.5 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50 w-2.5 h-2.5 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
                 list.innerHTML += `
                     <div class="bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 px-3 py-1.5 rounded-lg text-sm font-bold flex items-center gap-2 border border-blue-100 dark:border-blue-900/30 shadow-sm animate-fadeIn max-w-full">
                         <div class="relative w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center text-[10px] shrink-0">
@@ -1306,7 +1306,7 @@ export async function searchGroupUsers(q: string, type: 'group' | 'channel' = 'g
         if(data && data.length > 0) {
             data.forEach(u => {
                 const isPremiumUser = u.is_premium && (!u.premium_until || new Date(u.premium_until) > new Date());
-                const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -top-1 -left-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50 w-3 h-3 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
+                const premiumBadgeHtml = isPremiumUser ? `<div class="absolute -top-1 -left-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-50 w-3 h-3 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : '';
                 if(state.groupCreationSelectedUsers.find(su => su.id === u.id)) return;
                 const div = document.createElement('div');
                 div.className = 'p-3 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer border-b border-gray-50 dark:border-gray-700 flex items-center gap-3 transition-colors min-w-0';

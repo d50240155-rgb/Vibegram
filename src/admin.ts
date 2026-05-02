@@ -416,7 +416,7 @@ function renderUsersList(users: any[]) {
                         <div class="w-full h-full rounded-full bg-gray-700 overflow-hidden flex items-center justify-center text-xl font-bold text-gray-300">
                             ${u.avatar_url ? `<img src="${u.avatar_url}" class="w-full h-full object-cover">` : (u.display_name || u.username || 'U')[0].toUpperCase()}
                         </div>
-                        ${isPremiumUser ? `<div class="absolute -top-1 -left-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-10 w-4 h-4 flex items-center justify-center"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : ''}
+                        ${isPremiumUser ? `<div class="absolute -top-1 -left-1 bg-white dark:bg-gray-800 rounded-full p-0.5 shadow-sm border border-gray-200 dark:border-gray-700 z-10 w-4 h-4 flex items-center justify-center"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>` : ''}
                         ${isOnline ? `<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-gray-800 rounded-full z-40"></div>` : ''}
                     </div>
                     <div class="min-w-0 flex-1 flex flex-col justify-center">
@@ -598,7 +598,7 @@ function renderChatsList(chats: any[]) {
             
             const pr = state.currentProfile;
             const isPremium = pr?.is_premium && (!pr.premium_until || new Date(pr.premium_until) > new Date());
-            const badge = isPremium ? `<span class="inline-flex items-center justify-center ml-1 shrink-0" title="Vibegram Premium"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
+            const badge = isPremium ? `<span class="inline-flex items-center justify-center ml-1 shrink-0" title="Vibegram Premium"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
             document.getElementById('my-nickname')!.innerHTML = `<span class="flex items-center">${pr?.display_name || pr?.username || 'User'}${badge}</span>`;
             const myAvatar = document.getElementById('my-avatar');
             if (myAvatar) {
@@ -628,7 +628,7 @@ function renderChatsList(chats: any[]) {
         
         const pr = state.currentProfile;
         const isPremium = pr?.is_premium && (!pr.premium_until || new Date(pr.premium_until) > new Date());
-        const badge = isPremium ? `<span class="inline-flex items-center justify-center ml-1 shrink-0" title="Vibegram Premium"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
+        const badge = isPremium ? `<span class="inline-flex items-center justify-center ml-1 shrink-0" title="Vibegram Premium"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
         document.getElementById('my-nickname')!.innerHTML = `<span class="flex items-center">${pr?.display_name || pr?.username || 'User'}${badge}</span>`;
         const myAvatar = document.getElementById('my-avatar');
         if (myAvatar) {

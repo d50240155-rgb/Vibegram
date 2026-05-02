@@ -42,7 +42,7 @@ export function openSettings(modeOrSkip: 'full' | 'profile' | boolean = 'full', 
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     </div>
                 </div>
-                ${isMyPremium ? `<div class="absolute top-[80px] ml-20 bg-white dark:bg-gray-800 text-white w-8 h-8 rounded-full flex justify-center items-center font-bold shadow-lg border-2 border-white dark:border-gray-900" title="Premium"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-5 h-5 object-contain" alt="Premium"></div>` : ''}
+                ${isMyPremium ? `<div class="absolute top-[80px] ml-20 bg-white dark:bg-gray-800 text-white w-8 h-8 rounded-full flex justify-center items-center font-bold shadow-lg border-2 border-white dark:border-gray-900" title="Premium"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-5 h-5 object-contain" alt="Premium"></div>` : ''}
                 <input type="file" id="avatar-upload" accept="image/*" class="hidden" onchange="uploadAvatar(event)">
                 <div class="text-sm text-gray-500 dark:text-gray-400 mt-2 font-medium">Изменить фото</div>
                 <div class="text-xs text-blue-500 dark:text-blue-400 mt-2 font-medium cursor-pointer hover:text-blue-600 dark:hover:text-blue-300 transition-colors select-all" onclick="navigator.clipboard.writeText('@${state.currentProfile?.username || ''}'); const old=this.innerHTML; this.innerHTML='✅ Скопировано'; setTimeout(()=>this.innerHTML=old, 2000);" title="Копировать ID">@${state.currentProfile?.username || ''}</div>
@@ -94,7 +94,7 @@ export function openSettings(modeOrSkip: 'full' | 'profile' | boolean = 'full', 
                             <div class="w-full sm:w-auto">
                                 ${isMyPremium ? 
                                     `<div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center p-1.5 shrink-0"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>
+                                        <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center p-1.5 shrink-0"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>
                                         <div class="min-w-0 flex-1">
                                             <div class="font-bold text-yellow-300 tracking-wide text-xs sm:text-sm truncate">VIBEGRAM PREMIUM</div>
                                             <div class="text-[10px] sm:text-xs text-white/70 truncate">Активно до ${state.currentProfile.premium_until ? new Date(state.currentProfile.premium_until).toLocaleDateString() : '∞'}</div>
@@ -193,7 +193,7 @@ export function openSettings(modeOrSkip: 'full' | 'profile' | boolean = 'full', 
                             ].map(bg => `
                                 <div onclick="if(${bg.isPremium} && !${isMyPremium}) { window.buyPremiumModal(); return; } document.getElementById('settings-chat-bg').value = '${bg.id}'; document.querySelectorAll('.bg-preview').forEach(el => el.classList.remove('ring-2', 'ring-inset', 'ring-blue-500')); this.classList.add('ring-2', 'ring-inset', 'ring-blue-500'); saveSettings();" 
                                      class="relative bg-preview shrink-0 w-14 h-14 rounded-xl cursor-pointer ${bg.class} ${settings.chatBg === bg.id || (!settings.chatBg && bg.id === 'default') ? 'ring-2 ring-inset ring-blue-500' : ''} shadow-sm border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-transform active:scale-95">
-                                     ${bg.isPremium ? '<img src="/image/Google-Gemini-Logo-Transparent.png" class="w-5 h-5 absolute -top-2 -right-2 bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 p-0.5 shadow-sm" alt="Premium">' : ''}
+                                     ${bg.isPremium ? '<img src="./image/Google-Gemini-Logo-Transparent.png" class="w-5 h-5 absolute -top-2 -right-2 bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 p-0.5 shadow-sm" alt="Premium">' : ''}
                                 </div>
                             `).join('')}
                         </div>
@@ -429,7 +429,7 @@ export async function saveSettings() {
     state.currentProfile.settings = newSettings;
     
     const isPremium = state.currentProfile?.is_premium && (!state.currentProfile.premium_until || new Date(state.currentProfile.premium_until) > new Date());
-    const badge = isPremium ? `<span class="inline-flex items-center justify-center ml-1 shrink-0" title="Vibegram Premium"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
+    const badge = isPremium ? `<span class="inline-flex items-center justify-center ml-1 shrink-0" title="Vibegram Premium"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-3.5 h-3.5 object-contain" alt="Premium"></span>` : '';
     document.getElementById('my-nickname')!.innerHTML = `<span class="flex items-center">${newName}${badge}</span>`;
     
     if (theme === 'dark') {
@@ -621,7 +621,7 @@ function updateBonusProgress() {
     modal.innerHTML = `
         <div class="p-6">
             <div class="text-center mb-6">
-                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-indigo-100 to-white rounded-full flex items-center justify-center p-4 shadow-lg shadow-indigo-500/30 mb-4"><img src="/image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>
+                <div class="w-20 h-20 mx-auto bg-gradient-to-br from-indigo-100 to-white rounded-full flex items-center justify-center p-4 shadow-lg shadow-indigo-500/30 mb-4"><img src="./image/Google-Gemini-Logo-Transparent.png" class="w-full h-full object-contain" alt="Premium"></div>
                 <h3 class="text-2xl font-bold dark:text-white">VIBEGRAM PREMIUM</h3>
                 <p class="text-gray-500 dark:text-gray-400 mt-2 text-sm">Откройте эксклюзивные возможности и премиум-статус</p>
             </div>
